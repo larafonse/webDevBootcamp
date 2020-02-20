@@ -1,0 +1,19 @@
+h1{
+	color:rgba(11, 99, 150, 1);
+	border: 1px solid purple;
+	text-align: center;
+}
+
+li{
+	color:green;
+}
+
+h4{
+	background:rgb(255,100,80);
+	color:purple;
+}
+body{
+	background: url(https://i.etsystatic.com/15595500/r/il/09d213/1958943499/il_1588xN.1958943499_rzfs.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
