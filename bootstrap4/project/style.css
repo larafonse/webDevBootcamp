@@ -18,3 +18,16 @@ body{
 #mainNavbar .nav-link:hover{
 	color:#ea1c2c;
 }
+#special span{
+	color:#ea1c2c;
+}
+#special h1{
+	font-weight: 100;
+	font-size: 3.5rem;
+}
+@media(max-width:1300px){
+	#special h1{
+	font-weight: 100;
+	font-size: 3rem;
+}
+}
