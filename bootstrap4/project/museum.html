@@ -1,4 +1,4 @@
-<!doctype html>
+ <!doctype html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -50,6 +50,52 @@
         </div>
       </div>
     </section>
+
+    <section class="container-fluid px-0 blurb">
+      <div class="row align-items-center content">
+        <div class="col-md-6 order-2 order-md-1">
+          <img src="imgs/milk.png" class="img-fluid">
+        </div>
+        <div class="col-md-6 text-center order-1 order-md-2">
+          <div class="row justify-content-center">
+            <div class="col-10">
+              <h2>MUSEUM OF CANDY</h2>
+              <img src="imgs/lolli_icon.png" class="d-none d-lg-inline">
+              <p class="lead">The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother's keeper and the finder of lost children.</p>
+          </div>
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-center content">
+          <div class="col-md-6 order-2">
+            <img src="imgs/gumball.png" class="img-fluid">
+          </div>
+          <div class="col-md-6 text-center order-1">
+            <div class="row justify-content-center">
+              <div class="col-10">
+                <h2>MUSEUM OF CANDY</h2>
+                <img src="imgs/lolli_icon.png" class="d-none d-lg-inline">
+                <p class="lead">The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother's keeper and the finder of lost children.</p>
+            </div>
+            </div>
+          </div>
+      </div>
+      <div class="row align-items-center content">
+        <div class="col-md-6 order-2 order-md-1">
+          <img src="imgs/sprinkles.png" class="img-fluid">
+        </div>
+        <div class="col-md-6 text-center order-1 order-md-2">
+          <div class="row justify-content-center">
+            <div class="col-10">
+              <h2>MUSEUM OF CANDY</h2>
+                <img src="imgs/lolli_icon.png" class="d-none d-lg-inline">
+                <p class="lead">The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother's keeper and the finder of lost children.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </section>
     
 
     <!-- Optional JavaScript -->
@@ -57,5 +103,13 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script>
+      $(function () {
+            $(document).scroll(function () {
+                var $nav = $("#mainNavbar");
+                $nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height());
+            });
+        });
+    </script>
   </body>
 </html>
