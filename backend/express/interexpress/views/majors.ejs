@@ -1,0 +1,16 @@
+<%- include("partials/header") %>
+<h1>Here are the majors in my house</h1>
+
+<% for(var i = 0 ; i< majors.length ; i++){ %>
+    <h1><%=majors[i].title%> - <%=majors[i].name %> </h1>
+<% } %> 
+
+<% majors.forEach(function(major) {%>
+    <h1><%=major.title%> - <%=major.name %> </h1>
+<% }) %> 
+<form action="/addmajor" method="POST">
+    <input name="title" type="text" placeholder="major">
+    <input name="name" type="text" placeholder="name">
+    <button>Add major</button>
+</form>
+<%- include("partials/footer") %>
