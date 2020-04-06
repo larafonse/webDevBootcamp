@@ -9,8 +9,11 @@ app.set("view engine","ejs");
 var camps = [
     {name:"Oak Park", img:"https://cdn.greenfieldnews.com/wp-content/uploads/sites/13/2019/10/1b4f02f05b4fb79d2ad6a0826e37884f.jpg"},
     {name:"Pinnacles", img:"https://media-cdn.tripadvisor.com/media/photo-m/1280/17/62/b2/c1/pinnacles-national-park.jpg"},
-    {name:"San Lorenzo Park", img:"https://www.kingcity.com/wp-content/uploads/2015/04/san-lorenzo-park-2.png"}
-]
+    {name:"San Lorenzo Park", img:"https://www.kingcity.com/wp-content/uploads/2015/04/san-lorenzo-park-2.png"},
+    {name:"Oak Park", img:"https://cdn.greenfieldnews.com/wp-content/uploads/sites/13/2019/10/1b4f02f05b4fb79d2ad6a0826e37884f.jpg"},
+    {name:"Pinnacles", img:"https://media-cdn.tripadvisor.com/media/photo-m/1280/17/62/b2/c1/pinnacles-national-park.jpg"},
+    {name:"San Lorenzo Park", img:"https://www.kingcity.com/wp-content/uploads/2015/04/san-lorenzo-park-2.png"
+];
 // home route
 app.get("/",function(req,res){
     res.render("home");
