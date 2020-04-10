@@ -1,34 +1,18 @@
-var express = require("express");
-var app = express();
-var bodyParser = require("body-parser");
-var mongoose = require("mongoose");
+var express    = require("express"),
+    app        = express(),
+    bodyParser = require("body-parser"),
+    mongoose   = require("mongoose"),
+    camp       = require("./models/camp");
+    seedDB     = require("./seeds"),
+    Comment    = require("./models/comment")
+
+
 mongoose.connect('mongodb://localhost:27017/yelp_camp', {useNewUrlParser: true, useUnifiedTopology: true});
-
 app.use(bodyParser.urlencoded({extended:true}));
- 
-// allows us to render ejs file wwithout having to put .ejs at the end
 app.set("view engine","ejs");
+app.use(express.static(__dirname + "/public"));
+seedDB();
 
-// SCHEMA TEMPLATE
-var campSchema = new mongoose.Schema({
-    name:String,
-    img:String,
-    description:String
-});
-
-var camp = mongoose.model("Camp",campSchema);
-
-// camp.create({
-//     name:"Patriot Park", 
-//     img:"https://media-cdn.tripadvisor.com/media/photo-m/1280/17/62/b2/c1/pinnacles-national-park.jpg",
-//     description:"This is a very patriotic park. Also contains a skate park"
-// },function(err,camp){
-//         if(err){
-//             console.log(err);
-//             }else{
-//                 console.log(`${camp.name} SUCCESSFULLY ADDED TO DATABASE`);
-//             }
-//     });
 
 // home route
 app.get("/",function(req,res){
@@ -42,7 +26,7 @@ app.get("/campgrounds", function(req,res){
         if(err){
             console.log(err);
         }else{
-            res.render("campgrounds",{camps:camps});
+            res.render("campgrounds/campgrounds",{camps:camps});
         }
     });  
 });
@@ -68,18 +52,53 @@ app.post("/campgrounds", function(req, res){
 });
 // NEW - Schow form to create new campground
 app.get("/campgrounds/new", function(req,res){
-    res.render("new.ejs");
+    res.render("campgrounds/new");
 });
-// 
+// SHOW Camp
 app.get("/campgrounds/:id", function(req,res){
-    camp.findById(req.params.id, function(err, foundCamp){
+    camp.findById(req.params.id).populate("comments").exec(function(err, foundCamp){
         if(err){
             console.log(err);
         }else{
-            res.render("show", {camp :foundCamp});
+            res.render("campgrounds/show", {camp :foundCamp});
         }
     });
 });
+// ==========================
+//      COMMENT ROUTES
+// ==========================
+app.get("/campgrounds/:id/comments/new", function(req,res){
+    // find campground by id
+    camp.findById(req.params.id, function(err,camp){
+        if(err){
+            console.log(err)
+        }else{
+            res.render("comments/new", {camp:camp});
+        }
+    })
+});
+app.post("/campgrounds/:id/comments",function(req,res){
+
+    camp.findById(req.params.id, function(err,camp){
+        if(err){
+            console.log(err);
+            res.redirect("/campgrounds");
+        }else{
+            Comment.create(req.body.comment, function(err,comment){
+                if(err){
+                    console.log(err);
+                }else{
+                    camp.comments.push(comment);
+                    camp.save();
+                    res.redirect("/campgrounds/"+camp._id)
+                }
+            });
+        }
+    });
+    // look up campground using id
+    // add comment to post 
+    //redirect to campground page
+})
 
 app.listen(3000,function() { 
     console.log('Server listening on port 3000'); 
