@@ -23,32 +23,32 @@ var data = [
 
 function seedDB(){
     Camp.remove({},function(err){
-        if(err){
-            console.log(err);
-        }else{
-            console.log("seed removed");
-            data.forEach(function(seed){
-                Camp.create(seed,function(err,camp){
-                    if(err){
-                        console.log(err);
-                    }else{
-                        console.log("added a camp");
-                        Comment.create({
-                            text:"This place is great, but I wish there was internet.",
-                            author:"Joe"
-                        }, function(err,comment){
-                            if(err){
-                                console.log(err,comment);
-                            }else{
-                                console.log(comment);
-                                camp.comments.push(comment);
-                                camp.save();
-                            }
-                        });
-                    }
-                });
-            });
-        }
+        // if(err){
+        //     console.log(err);
+        // }else{
+        //     console.log("seed removed");
+        //     data.forEach(function(seed){
+        //         Camp.create(seed,function(err,camp){
+        //             if(err){
+        //                 console.log(err);
+        //             }else{
+        //                 console.log("added a camp");
+        //                 Comment.create({
+        //                     text:"This place is great, but I wish there was internet.",
+        //                     author:"Joe"
+        //                 }, function(err,comment){
+        //                     if(err){
+        //                         console.log(err,comment);
+        //                     }else{
+        //                         console.log(comment);
+        //                         camp.comments.push(comment);
+        //                         camp.save();
+        //                     }
+        //                 });
+        //             }
+        //         });
+        //     });
+        // }
     });
 }
 
